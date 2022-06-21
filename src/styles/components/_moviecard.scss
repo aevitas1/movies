@@ -1,0 +1,69 @@
+.card_wrapper {
+  .card_body {
+    position: relative;
+    width: 15rem;
+    height: 100%;
+    transition: 150ms ease-out all;
+
+    &:hover {
+      transform: scale(1.1) translateY(-5px);
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      background-color: rgba(0, 0, 0, 0.25);
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+    }
+
+    &:hover::after {
+      background-color: rgba(0, 0, 0, 0);
+    }
+
+    &:hover .card_rating {
+      border-top: 55px solid rgba(0, 0, 0, 0.6);
+
+      &::before {
+        font-weight: 600;
+      }
+    }
+
+    .card_rating {
+      position: absolute;
+      top: 0;
+      right: 0rem;
+      border-top: 55px solid rgba(0, 0, 0, 0.4);
+      border-left: 55px solid transparent;
+
+      &::before {
+        position: absolute;
+        text-align: center;
+        content: attr(data-rating) "";
+        color: #fff;
+        right: -0.2rem;
+        bottom: 0.5rem;
+        width: 3rem;
+        height: 3rem;
+      }
+    }
+  }
+
+  .new_movie {
+    .movie_title {
+      color: #f9f9f9;
+      text-transform: uppercase;
+      text-decoration: underline;
+      padding: 0.4rem 0.4rem 1rem 0.4rem;
+    }
+
+    .movie_descr {
+      color: #f9f9f9;
+      padding: 0.4rem 0.4rem 0.5rem 0.4rem;
+    }
+  }
+}

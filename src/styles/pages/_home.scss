@@ -1,0 +1,8 @@
+.home_wrapper {
+  padding: 2.5rem 2.5rem;
+  .home_movie_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  grid-gap: 1rem;
+  }
+}

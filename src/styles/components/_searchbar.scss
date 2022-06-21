@@ -1,0 +1,32 @@
+.searchbar-container {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  padding-top: 1.5rem;
+
+  input {
+    text-indent: 1.8rem;
+    height: 2rem;
+    position: relative;
+    z-index: 1;
+    border-radius: 3px;
+    border: none;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .searchbar-icon {
+    z-index: 5;
+    font-size: 1.5rem;
+    transform: translateX(1.7rem) translateY(0.3rem);
+    opacity: 0.7;
+    transition: 150ms ease-out all;
+
+    &:hover {
+      opacity: 1;
+      cursor: pointer;
+    }
+  }
+}
