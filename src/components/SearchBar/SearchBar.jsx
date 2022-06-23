@@ -1,41 +1,70 @@
 import {GoSearch} from "react-icons/go";
-import {useState, useContext, useEffect} from "react";
+import {useContext, useEffect} from "react";
 import {MovieContext} from '../../data/MovieContext';
 
 function SearchBar() {
-    const [text, setText] = useState("");
-    const {FetchMovies, setSearchTerm} = useContext(MovieContext);
+    const {
+        setSearchTerm,
+        movieList,
+        FetchMovies,
+        searchTerm,
+        text,
+        setText
+    } = useContext(MovieContext);
 
-    const handleSearchText = (e) => {
-        setText(e.target.value);
-    };
-
-    const handleSearch = (e) => {
-        if (e.key === "Enter") {
-            setSearchTerm(text);
-            setText("");
+    const handleSearch = () => {
+        if (text.length !== 0) {
+            setSearchTerm(text)
         }
     };
 
     const handleSearchEnter = (e) => {
         if (e.key === "Enter") {
-            setSearchTerm(text);
-            setText("");
+            if (text.length !== 0) {
+                setSearchTerm(text)
+            }
         }
     };
 
+    function handleTextSearch(e) {
+        setText(e.target.value)
+    }
+
+    useEffect(() => {
+        setSearchTerm(text);
+    }, [text])
+
     return (
-        <div className="searchbar-container">
-            <GoSearch onClick={handleSearch} className="searchbar-icon"/>
-            <input
-                onKeyDown={handleSearchEnter}
-                onChange={handleSearchText}
-                type="text"
-                placeholder="Search movie..."
-                value={text}
-            />
-        </div>
-    );
+        searchTerm.length === 0 ? (
+            <>
+                <div className="searchbar-container">
+                    <GoSearch onClick={handleSearch} className="searchbar-icon"/>
+                    <input
+                        onKeyDown={handleSearchEnter}
+                        onChange={handleTextSearch}
+                        type="text"
+                        placeholder="Search movie..."
+                        defaultValue={text}
+                    />
+                </div>
+                <p className="search_results"></p>
+            </>
+        ) : (
+            <>
+                <div className="searchbar-container">
+                    <GoSearch onClick={handleSearch} className="searchbar-icon"/>
+                    <input
+                        onKeyDown={handleSearchEnter}
+                        onChange={handleTextSearch}
+                        type="text"
+                        placeholder="Search movie..."
+                        defaultValue={text}
+                    />
+                </div>
+                <p className="search_results">Found {searchTerm.length} results</p>
+            </>
+        )
+    )
 }
 
 export default SearchBar;

@@ -12,7 +12,6 @@
     border-radius: 3px;
     border: none;
 
-    .test
     &:focus {
       outline: none;
     }
@@ -30,4 +29,13 @@
       cursor: pointer;
     }
   }
+}
+
+.search_results {
+  width: 100vw;
+  text-align: center;
+  color: #fff;
+  padding-bottom: 2rem;
+  padding-top: 1rem;
+  height: 2rem;
 }
