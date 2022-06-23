@@ -5,8 +5,6 @@ import {MovieContext} from '../../data/MovieContext';
 function SearchBar() {
     const {
         setSearchTerm,
-        movieList,
-        FetchMovies,
         searchTerm,
         text,
         setText

@@ -4,8 +4,8 @@ function Home() {
     return (
         <>
             <div className="home_wrapper">
-                <div className="home_movie_grid">
-                    <MovieList />
+                <div className="movie_grid">
+                    <MovieList/>
                 </div>
             </div>
         </>
