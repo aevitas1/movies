@@ -7,6 +7,7 @@ import About from "./pages/About";
 import Header from './components/Nav/Header';
 import {MovieProvider} from "../src/data/MovieContext";
 import SearchBar from "./components/SearchBar/SearchBar";
+import MovieDetails from "./data/MovieDetails";
 
 
 function App() {
@@ -15,12 +16,14 @@ function App() {
             <Router>
                 <main className="page_wrapper">
                     <Header/>
+                    
                     <SearchBar/>
                     <Routes>
-                        <Route path='/' element={<Home/>}/>
+                        <Route path='*' element={<Home/>}/>
                         <Route path='/new' element={<New/>}/>
                         <Route path='/popular' element={<Popular/>}/>
                         <Route path='/about' element={<About/>}/>
+                        <Route path={`/movie/`} element={<MovieDetails/>}/>
                     </Routes>
                 </main>
             </Router>

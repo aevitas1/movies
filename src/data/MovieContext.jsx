@@ -18,6 +18,7 @@ export const MovieProvider = (props) => {
     const [movieList, setMovieList] = useState([]);
     const [loading, setLoading] = useState(true);
     const [text, setText] = useState("");
+    const [movie, setMovie] = useState([]);
 
 
     const fetchCredits = async (movieId) => {
@@ -33,14 +34,23 @@ export const MovieProvider = (props) => {
                 : axios.get(`${POPULAR_BASE_URL}&page={page}`).then((res) => {
                     setMovieList(res.data.results);
                     setLoading(false);
+                    clearMovies();
                 });
         }, []);
     };
 
-    const FetchMovie = async (movieId) => {
-        const endpoint = `${API_URL}movie/${movieId}?api_key=${API_KEY}`;
-        return await (await fetch(endpoint)).json();
+    const FetchMovie = (movieId) => {
+        axios.get(`${API_URL}movie/${movieId}?api_key=${API_KEY}`).then((res) => {
+            setMovie(res.data);
+            setLoading(false);
+            console.log(res.data, loading)
+        })
+        clearMovies();
     }
+    const clearMovies = () => {
+        setMovie([movie]);
+    }
+
 
     // **************************************************************************
 
@@ -64,6 +74,7 @@ export const MovieProvider = (props) => {
                 loading,
                 text,
                 setText,
+                movie
             }}
         >
             {props.children}
