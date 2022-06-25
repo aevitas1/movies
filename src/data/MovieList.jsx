@@ -2,6 +2,7 @@ import React from 'react';
 import {useContext} from "react";
 import MovieItem from "./MovieItem";
 import {MovieContext} from "./MovieContext";
+import Loading from '../components/Loading';
 
 function MovieList() {
     const {
@@ -11,8 +12,8 @@ function MovieList() {
     } = useContext(MovieContext);
 
     FetchMovies();
-    return loading ? (
-        ''
+    return loading && movieList.length > 0 ? (
+        <Loading/>
     ) : (
         <>
             {movieList.map((item) => (
