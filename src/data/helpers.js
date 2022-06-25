@@ -13,3 +13,14 @@ export const convertMoney = money => {
     });
     return formatter.format(money);
 };
+
+// Shorten the release date string
+export const releaseDate = date => {
+    return date.substring(0, 4);
+}
+
+// Round up movie score
+export const movieScore = score => {
+    const newScore = score.toFixed(1);
+    return `${newScore}`;
+}

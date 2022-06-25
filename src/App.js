@@ -5,7 +5,7 @@ import Popular from "./pages/Popular";
 import New from "./pages/New";
 import About from "./pages/About";
 import Header from './components/Nav/Header';
-import {MovieProvider} from "../src/data/MovieContext";
+import {MovieProvider} from "./data/MovieContext";
 import SearchBar from "./components/SearchBar/SearchBar";
 import MovieDetails from "./data/MovieDetails";
 
@@ -16,7 +16,7 @@ function App() {
             <Router>
                 <main className="page_wrapper">
                     <Header/>
-                    
+
                     <SearchBar/>
                     <Routes>
                         <Route path='*' element={<Home/>}/>
