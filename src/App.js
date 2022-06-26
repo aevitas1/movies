@@ -5,24 +5,26 @@ import Popular from "./pages/Popular";
 import Upcoming from "./pages/Upcoming";
 import About from "./pages/About";
 import Header from './components/Nav/Header';
-import {MovieContext, MovieProvider} from "./data/MovieContext";
+import {MovieProvider} from "./data/MovieContext";
 
-import MovieDetails from "./data/MovieDetails";
+import MovieDetails from "./data/MovieDetails/MovieDetails";
 
 
 function App() {
     return (
         <MovieProvider>
             <Router>
-                <main className="page_wrapper">
+                <main id="page_wrapper" className="page_wrapper">
                     <Header/>
-                    <Routes>
-                        <Route path='*' element={<Home/>}/>
-                        <Route path='/upcoming' element={<Upcoming/>}/>
-                        <Route path='/popular' element={<Popular/>}/>
-                        <Route path='/about' element={<About/>}/>
-                        <Route path={`/movie/:id`} element={<MovieDetails/>}/>
-                    </Routes>
+                    <div className="inner_wrapper">
+                        <Routes>
+                            <Route path='*' element={<Home/>}/>
+                            <Route path='/upcoming' element={<Upcoming/>}/>
+                            <Route path='/popular' element={<Popular/>}/>
+                            <Route path='/about' element={<About/>}/>
+                            <Route path={`/movie/:id`} element={<MovieDetails/>}/>
+                        </Routes>
+                    </div>
                 </main>
             </Router>
         </MovieProvider>

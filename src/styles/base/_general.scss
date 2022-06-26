@@ -1,5 +1,8 @@
 body {
   background-color: rgb(var(--main-bg));
-  max-width: 100vw;
   overflow-x: hidden;
+
+  .inner_wrapper {
+    padding-top: 10vh;
+  }
 }

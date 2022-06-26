@@ -2,3 +2,27 @@ body {
   font-family: 'Poppins', sans-serif;
   color: rgb(var(--main-font-clr));
 }
+
+a {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    //display: inline-block;
+    background-color: rgba(var(--secondary-clr), 0.25);
+    height: 0.4rem;
+    width: 100%;
+    left: 0;
+    right: 0;
+    transform: skew(-30deg) rotate(-2deg);
+    bottom: 0.1rem;
+    transition: 100ms ease-out all;
+  }
+
+  @media (hover: hover) {
+    &:hover::after {
+      transform: translateY(5px) skew(-30deg) rotate(-2deg);
+    }
+  }
+}

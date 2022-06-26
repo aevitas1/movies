@@ -50,36 +50,6 @@
       }
     }
 
-
-    .cnt_l {
-      position: relative;
-      height: 70vh;
-      background-position-y: 20%;
-      width: 100vw;
-      background-repeat: no-repeat;
-      background-size: cover;
-      z-index: 1;
-
-      &::after {
-        content: "";
-        position: absolute;
-        background-color: rgba(0, 0, 0, 0.95);
-        width: 100vw;
-        height: 70vh;
-      }
-
-      .gradient {
-        height: 15%;
-        top: 85%;
-        width: 100%;
-        background: linear-gradient(180deg, rgba(var(--main-bg), 0) 0%, rgba(var(--main-bg), 1) 100%);
-        z-index: 10;
-        position: absolute;
-      }
-
-    }
-
-
     .cnt_l_poster {
       position: absolute;
       transform: translateY(7.5vh) translateX(10vw);
@@ -92,10 +62,88 @@
         border-radius: 5px;
       }
     }
-  }
 
-  .info_container {
-    width: 80vw;
-    margin: 0 auto;
+    .info_container {
+      width: 100vw;
+      padding: 0 10vw;
+      z-index: 999;
+      background-color: rgb(var(--main-bg));
+      transform: translateY(10vh);
+      min-height: 40vh;
+
+      .info_stroke {
+        display: flex;
+        justify-content: center;
+
+        table {
+          thead,
+          tbody {
+            text-align: left;
+
+            tr th,
+            tr td {
+              padding: 0 1rem;
+            }
+          }
+        }
+      }
+
+      .actors {
+        display: flex;
+        flex-wrap: wrap;
+        padding-top: 3rem;
+
+        h2 {
+          padding-bottom: 1.5rem;
+        }
+
+        .actor_card {
+          display: flex;
+          flex-flow: column;
+          padding: 1rem 1rem;
+
+          .actor_img {
+            display: flex;
+            justify-content: center;
+            z-index: 1;
+
+            img {
+              max-width: 92px;
+              box-shadow: 0px 10px 30px 9px #000000;
+              @media (hover: hover) {
+                &:hover {
+                  transform: scaleZ(8) perspective(100px);
+                }
+              }
+              cursor: pointer;
+              transition: 80ms ease-out all;
+            }
+          }
+
+          .card_body {
+            text-align: center;
+            z-index: 2;
+
+            .real_name {
+              font-weight: 500;
+              padding-top: 0.5rem;
+
+              span {
+                font-weight: 600;
+                padding-left: 0.2rem;
+              }
+            }
+
+            .play_as {
+              opacity: 0.75;
+              font-style: italic;
+              font-weight: 300;
+              max-width: 12rem;
+            }
+
+          }
+        }
+      }
+    }
   }
 }
