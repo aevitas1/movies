@@ -2,11 +2,11 @@ import './styles/index.scss';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Home from "./pages/Home";
 import Popular from "./pages/Popular";
-import New from "./pages/New";
+import Upcoming from "./pages/Upcoming";
 import About from "./pages/About";
 import Header from './components/Nav/Header';
-import {MovieProvider} from "./data/MovieContext";
-import SearchBar from "./components/SearchBar/SearchBar";
+import {MovieContext, MovieProvider} from "./data/MovieContext";
+
 import MovieDetails from "./data/MovieDetails";
 
 
@@ -16,14 +16,12 @@ function App() {
             <Router>
                 <main className="page_wrapper">
                     <Header/>
-
-                    <SearchBar/>
                     <Routes>
                         <Route path='*' element={<Home/>}/>
-                        <Route path='/new' element={<New/>}/>
+                        <Route path='/upcoming' element={<Upcoming/>}/>
                         <Route path='/popular' element={<Popular/>}/>
                         <Route path='/about' element={<About/>}/>
-                        <Route path={`/movie/`} element={<MovieDetails/>}/>
+                        <Route path={`/movie/:id`} element={<MovieDetails/>}/>
                     </Routes>
                 </main>
             </Router>

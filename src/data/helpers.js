@@ -24,3 +24,13 @@ export const movieScore = score => {
     const newScore = score.toFixed(1);
     return `${newScore}`;
 }
+
+// Convert US date to EU date
+export const convertDate = oldDate => {
+    // const date = oldDate.replace(/-/g, '');
+    const dates = oldDate.split('');
+    const year = dates[0] + dates[1] + dates[2] + dates[3];
+    const month = dates[5] + dates[6];
+    const day = dates[8] + dates[9];
+    return day + '-' + month + '-' + year;
+}

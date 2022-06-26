@@ -2,7 +2,8 @@
   min-height: 100vh;
   color: rgb(var(--main-font-clr));
 
-  .container {
+
+  .movie_container {
     display: flex;
     flex-flow: column;
 
@@ -36,6 +37,16 @@
 
           }
         }
+
+        .release_date_full {
+          padding-top: 1rem;
+          font-weight: 600;
+        }
+
+        .movie_overview {
+          width: 50vw;
+          padding-top: 1rem;
+        }
       }
     }
 
@@ -63,8 +74,6 @@
         width: 100%;
         background: linear-gradient(180deg, rgba(var(--main-bg), 0) 0%, rgba(var(--main-bg), 1) 100%);
         z-index: 10;
-        //background-color: red;
-        //opacity: 0.1;
         position: absolute;
       }
 
@@ -83,5 +92,10 @@
         border-radius: 5px;
       }
     }
+  }
+
+  .info_container {
+    width: 80vw;
+    margin: 0 auto;
   }
 }

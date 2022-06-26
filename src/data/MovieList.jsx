@@ -12,6 +12,7 @@ function MovieList() {
     } = useContext(MovieContext);
 
     FetchMovies();
+    console.log(movieList)
     return loading && movieList.length > 0 ? (
         <Loading/>
     ) : (

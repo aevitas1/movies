@@ -11,10 +11,10 @@ function Nav() {
                     <NavLink className={(navData) => navData.isActive ? 'active' : ''} to='popular'>Popular</NavLink>
                 </li>
                 <li className='nav_links'>
-                    <NavLink className={(navData) => navData.isActive ? 'active' : ''} to='new'>New</NavLink>  
+                    <NavLink className={(navData) => navData.isActive ? 'active' : ''} to='upcoming'>Upcoming</NavLink>
                 </li>
                 <li className='nav_links'>
-                    <NavLink className={(navData) => navData.isActive ? 'active' : ''} to='/about'>About</NavLink>  
+                    <NavLink className={(navData) => navData.isActive ? 'active' : ''} to='/about'>About</NavLink>
                 </li>
             </ul>
         </>
