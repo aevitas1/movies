@@ -3,16 +3,15 @@ body {
   color: rgb(var(--main-font-clr));
 }
 
-a {
+a:not(.no_after) {
   position: relative;
 
   &::after {
     content: '';
     position: absolute;
-    //display: inline-block;
     background-color: rgba(var(--secondary-clr), 0.25);
     height: 0.4rem;
-    width: 100%;
+    width: max(100%, 1rem);
     left: 0;
     right: 0;
     transform: skew(-30deg) rotate(-2deg);

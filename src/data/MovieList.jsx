@@ -10,7 +10,7 @@ function MovieList() {
         FetchMovies,
         loading,
     } = useContext(MovieContext);
-
+    const page = [1,];
     FetchMovies();
     console.log(movieList)
     return loading && movieList.length > 0 ? (

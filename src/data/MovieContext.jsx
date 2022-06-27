@@ -31,12 +31,12 @@ export const MovieProvider = (props) => {
 
     // **************************************************************************
     // Fetch movies to fill the homepage
-    const FetchMovies = () => {
+    const FetchMovies = (page) => {
         useEffect(() => {
             setLoading(true);
             searchTerm.value === ''
                 ? axios.get(`${SEARCH_BASE_URL}${searchTerm}&page={page}`)
-                : axios.get(`${POPULAR_BASE_URL}&page={page}`).then((res) => {
+                : axios.get(`${POPULAR_BASE_URL}&page=${page}`).then((res) => {
                     setMovieList(res.data.results);
                     setLoading(false);
                 });

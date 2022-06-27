@@ -6,7 +6,7 @@ import Upcoming from "./pages/Upcoming";
 import About from "./pages/About";
 import Header from './components/Nav/Header';
 import {MovieProvider} from "./data/MovieContext";
-
+import Footer from "./components/Footer";
 import MovieDetails from "./data/MovieDetails/MovieDetails";
 
 
@@ -24,6 +24,7 @@ function App() {
                             <Route path='/about' element={<About/>}/>
                             <Route path={`/movie/:id`} element={<MovieDetails/>}/>
                         </Routes>
+                        <Footer/>
                     </div>
                 </main>
             </Router>
