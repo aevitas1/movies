@@ -1,0 +1,134 @@
+.nav_menu {
+  display: flex;
+  flex-flow: row;
+  position: relative;
+  height: 3rem;
+  width: 100vw;
+
+  .nav_btn {
+    display: flex;
+    width: max(5vw, 4rem);
+
+    .menu_btn {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    align-self: center;
+    margin: auto auto;
+    width: 1.5rem;
+    height: 1.5rem;
+    cursor: pointer;
+    z-index: 999;
+
+    & * {
+      transition: 100ms ease-out all;
+    }
+
+    &.m_active {
+      width: 2rem;
+      height: 2rem;
+      transform: translateX(0.2rem) translateY(0.2rem);
+    }
+
+    .btn_top,
+    .btn_middle,
+    .btn_bottom {
+      position: relative;
+      height: 3px;
+      width: 1.5rem;
+      background-color: rgb(var(--main-font-clr));
+    }
+
+    .btn_middle.m_active {
+      opacity: 0;
+    }
+
+    .btn_top.m_active {
+      transform: rotate(45deg) translateY(0.5rem) translateX(0.5rem);
+    }
+
+    .btn_bottom.m_active {
+      transform: rotate(-45deg) translateY(-0.8rem) translateX(0.75rem);
+    }
+  }
+  }
+
+  .nav_hide {
+    display: none;
+  }
+  .nav {
+    display: flex;
+    align-self: center;
+    margin: 0 auto;
+    position: relative;
+    flex-flow: row;
+    width: min(600px, 50vw);
+    justify-content: space-between;
+    transition: opacity 300ms ease-out;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    &.m_active {
+      pointer-events: all;
+      opacity: 1;
+    }
+    .nav_links {
+      position: relative;
+      display: flex;
+      font-size: 2rem;
+      cursor: pointer;
+      align-self: center;
+      padding-top: 1rem;
+      z-index: 999;
+      a {
+        z-index: 9999;
+      }
+      & * {
+        transition: opacity 300ms ease-out;
+      }
+      &:hover:not(&.search) {
+        svg {
+          opacity: 0;
+        }
+        &::after {
+          opacity: 1;
+          transition: opacity 300ms ease-out;
+        }
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        text-transform: uppercase;
+        margin: 0 auto;
+        font-size: 1rem;
+        display: block;
+        color: rgb(var(--secondary-clr));
+        opacity: 0;
+        bottom: 1rem;
+        transition: opacity 300ms ease-out;
+      }
+      & a.active {
+        color: rgb(var(--secondary-clr));
+      }
+      &.link_home::after {
+        content: 'Home';
+        left: -30%;
+      }
+      &.link_popular::after {
+        content: 'Popular';
+        left: -65%;
+      }
+      &.link_upcoming::after {
+        content: 'Upcoming';
+        left: -100%;
+      }
+      &.link_about::after {
+        content: 'About';
+        left: -50%;
+      }
+      &.search:hover {
+        color: rgb(var(--secondary-clr));
+      }
+    }
+  }
+}

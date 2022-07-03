@@ -27,7 +27,6 @@ export const movieScore = score => {
 
 // Convert US date to EU date
 export const convertDate = oldDate => {
-    // const date = oldDate.replace(/-/g, '');
     const dates = oldDate.split('');
     const year = dates[0] + dates[1] + dates[2] + dates[3];
     const month = dates[5] + dates[6];
