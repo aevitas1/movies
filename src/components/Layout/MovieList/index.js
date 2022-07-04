@@ -10,9 +10,11 @@ const MovieList = ({loading, movies}) => {
         </>
     ) : (
         <>
+            <div className="movie_grid">
             {movies.map((item) => (
                 <MovieItem key={item.id} item={item}/>
             ))}
+            </div>
         </>
         )
 }

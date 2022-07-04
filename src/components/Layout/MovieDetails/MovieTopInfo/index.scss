@@ -1,0 +1,55 @@
+.cnt_r {
+  position: absolute;
+  left: 35%;
+  top: 27.5%;
+  z-index: 11;
+
+  .title {
+    .tagline {
+      opacity: 0.75;
+      font-style: italic;
+      font-weight: 300;
+      padding-bottom: 1rem;
+    }
+
+    span {
+      display: inline-flex;
+
+      .release_date {
+        text-transform: uppercase;
+      }
+
+      .movie_score {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        border: 1px solid #f8f8f8;
+        margin-left: 0.5rem;
+
+      }
+    }
+
+    .release_date_full {
+      padding-top: 1rem;
+      font-weight: 600;
+    }
+
+    .movie_overview {
+      width: 50vw;
+      padding-top: 1rem;
+    }
+  }
+}
+
+.cnt_l_poster {
+  position: absolute;
+  transform: translateY(7.5vh) translateX(10vw);
+  box-shadow: 0 0 75px 1px rgb(var(--main-font-clr));
+  border-radius: 70px;
+  z-index: 15;
+
+  img {
+    height: 55vh;
+    border-radius: 5px;
+  }
+}

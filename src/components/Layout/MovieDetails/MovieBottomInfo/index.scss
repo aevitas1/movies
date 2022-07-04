@@ -1,0 +1,82 @@
+.info_container {
+  width: 100vw;
+  padding: 0 10vw;
+  z-index: 999;
+  background-color: rgb(var(--main-bg));
+  transform: translateY(10vh);
+  min-height: 40vh;
+
+  .info_stroke {
+    display: flex;
+    justify-content: center;
+
+    table {
+      thead,
+      tbody {
+        text-align: left;
+
+        tr th,
+        tr td {
+          padding: 0 1rem;
+        }
+      }
+    }
+  }
+
+  .actors {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 3rem;
+
+    h2 {
+      padding-bottom: 1.5rem;
+    }
+
+    .actor_card {
+      display: flex;
+      flex-flow: column;
+      padding: 1rem 1rem;
+
+      .actor_img {
+        display: flex;
+        justify-content: center;
+        z-index: 1;
+
+        img {
+          max-width: 92px;
+          box-shadow: 0px 10px 30px 9px #000000;
+          @media (hover: hover) {
+            &:hover {
+              transform: scaleZ(8) perspective(100px);
+            }
+          }
+          cursor: pointer;
+          transition: 80ms ease-out all;
+        }
+      }
+
+      .card_body {
+        text-align: center;
+        z-index: 2;
+
+        .real_name {
+          font-weight: 500;
+          padding-top: 0.5rem;
+
+          span {
+            font-weight: 600;
+            padding-left: 0.2rem;
+          }
+        }
+
+        .play_as {
+          opacity: 0.75;
+          font-style: italic;
+          font-weight: 300;
+          max-width: 12rem;
+        }
+
+      }
+    }
+  }
+}

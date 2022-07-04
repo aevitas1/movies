@@ -1,9 +1,29 @@
 import './index.scss';
+import {useContext} from 'react';
+import {MovieContext} from '../../../data/MovieContext';
+import Loader from '../../Loader';
+import MovieBottomInfo from "./MovieBottomInfo";
+import MovieVideo from "./MovieVideo";
+import MovieTopInfo from "./MovieTopInfo";
 
 const MovieDetails = () => {
-    return (
+
+    const {
+        loading
+    } = useContext(MovieContext);
+
+    return loading ? (
         <>
+        <Loader />
         </>
+    ) : (
+        <div className="movie_wrapper">
+            <div className="movie_container">
+                <MovieVideo />
+                <MovieTopInfo />
+                <MovieBottomInfo />
+            </div>
+        </div>
     )
 }
 
