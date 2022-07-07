@@ -24,11 +24,9 @@ export const MovieProvider = (props) => {
         await axios.get(`${API_URL}movie/${movieId}/credits?api_key=${API_KEY}`).then((res) => {
             setMovieCredits(res.data);
         })
-        setLoading(true);
         await axios.get(`${API_URL}movie/${movieId}/videos?api_key=${API_KEY}`).then((res) => {
             setMovieVideo(res.data);
         })
-        setLoading(true);
         await axios.get(`${API_URL}movie/${movieId}/images?api_key=${API_KEY}`).then((res) => {
             setMovieImages(res.data);
         })
