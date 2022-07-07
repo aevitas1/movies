@@ -3,16 +3,18 @@ import './index.scss';
 import {useContext} from 'react';
 import {convertMoney} from '../../../../data/helpers'
 import {MovieContext} from '../../../../data/MovieContext';
+import MovieList from '../../MovieList';
 import {IMAGE_BASE_URL} from '../../../../data/config';
 import NoImage from '../../../../images/no_image.jpg';
 
 const MovieBottomInfo = () => {
     const {
         movie,
-        movieCredits
+        movieCredits,
+        recommendedMoviesList,
+        similarMoviesList
     } = useContext(MovieContext);
 
-    console.log(movieCredits, 'credits')
     return (
         <>
             <div className="info_container">
@@ -62,6 +64,16 @@ const MovieBottomInfo = () => {
 
                         </div>
                     )) : ('')}
+                </div>
+
+                <h2 style={{padding: '3rem 0'}}>Our recommendations</h2>
+                <div className="movie_carrousel">
+                    { <MovieList movies={recommendedMoviesList}/> }
+                </div>
+
+                <h2 style={{padding: '3rem 0'}}>Similar movies</h2>
+                <div className="movie_carrousel">
+                    { <MovieList movies={similarMoviesList}/> }
                 </div>
             </div>
         </>

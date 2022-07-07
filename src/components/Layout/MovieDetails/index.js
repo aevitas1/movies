@@ -9,7 +9,7 @@ import MovieTopInfo from "./MovieTopInfo";
 const MovieDetails = () => {
 
     const {
-        loading
+        loading,
     } = useContext(MovieContext);
 
     return loading ? (

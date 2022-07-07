@@ -30,11 +30,9 @@ const MovieTopInfo = () => {
                                     ) :
                                     ('')}
 
-                        <p>{movie.genres.length > 0 ? (
-                            [0].name `&#x2022;`
-                        ) : (
-                            ''
-                        )}</p>
+                        {movie.genres.length !== 0 && (
+                            <p>{movie.genres[0].name} &#x2022; </p>
+                        )}
 
                         {movie.status === 'Released' ? (
                             <p className='release_date'>&nbsp;

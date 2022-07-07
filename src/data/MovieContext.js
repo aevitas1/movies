@@ -10,6 +10,8 @@ export const MovieProvider = (props) => {
     const [movieCredits, setMovieCredits] = useState([]);
     const [movieVideo, setMovieVideo] = useState([]);
     const [movieImages, setMovieImages] = useState([]);
+    const [recommendedMoviesList, setRecommendedMoviesList] = useState([]);
+    const [similarMoviesList, setSimilarMoviesList] = useState([]);
 
     // Fetch movie details
     const FetchMovie = async (movieId) => {
@@ -18,25 +20,26 @@ export const MovieProvider = (props) => {
         setLoading(true);
         await axios.get(`${API_URL}movie/${movieId}?api_key=${API_KEY}`).then((res) => {
             setMovie(res.data);
-            console.log(res.data, loading)
-            axios.get(`${API_URL}movie/${movieId}/credits?api_key=${API_KEY}`).then((res) => {
-                setMovieCredits(res.data)
-                console.log(movieCredits, 'credits')
-            })
-            axios.get(`${API_URL}movie/${movieId}/videos?api_key=${API_KEY}`).then((res) => {
-                setMovieVideo(res.data)
-                setLoading(false)
-                console.log(movieVideo, 'video')
-            })
-            axios.get(`${API_URL}movie/${movieId}/images?api_key=${API_KEY}`).then((res) => {
-                setMovieImages(res.data)
-                setLoading(false)
-                console.log(movieImages, 'images')
-            })
-        });
+        })
+        await axios.get(`${API_URL}movie/${movieId}/credits?api_key=${API_KEY}`).then((res) => {
+            setMovieCredits(res.data);
+        })
+        setLoading(true);
+        await axios.get(`${API_URL}movie/${movieId}/videos?api_key=${API_KEY}`).then((res) => {
+            setMovieVideo(res.data);
+        })
+        setLoading(true);
+        await axios.get(`${API_URL}movie/${movieId}/images?api_key=${API_KEY}`).then((res) => {
+            setMovieImages(res.data);
+        })
+        await axios.get(`${API_URL}movie/${movieId}/recommendations?api_key=${API_KEY}`).then((res) => {
+            setRecommendedMoviesList(res.data.results);
+        })
+        await axios.get(`${API_URL}movie/${movieId}/similar?api_key=${API_KEY}`).then((res) => {
+            setSimilarMoviesList(res.data.results);
+        })
+        setLoading(false);
     }
-
-
 
     return (
         <MovieContext.Provider
@@ -48,7 +51,9 @@ export const MovieProvider = (props) => {
                 movieCredits,
                 movieVideo,
                 movieImages,
-                loading
+                loading,
+                recommendedMoviesList,
+                similarMoviesList
             }}
         >
             {props.children}

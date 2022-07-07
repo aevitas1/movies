@@ -150,18 +150,20 @@ a:not(.card_wrapper > a, .no_after) {
     content: '';
     position: absolute;
     background-color: rgba(var(--secondary-clr), 0.6);
-    height: 0.4rem;
+    height: 1.5rem;
     width: max(100%, 1rem);
     left: 0;
     right: 0;
-    transform: skew(-30deg) rotate(-2deg);
-    bottom: 0.1rem;
+    transform: translateY(-5px) skew(-10deg) rotate(-2deg);
+    bottom: -0.3rem;
     transition: 100ms ease-out all;
+    z-index: -1;
   }
 
   @media (hover: hover) {
     &:hover::after {
-      transform: translateY(5px) skew(-30deg) rotate(-2deg);
+      transform: skew(-35deg) rotate(-2deg);
+      height: 0.4rem;
     }
   }
 }

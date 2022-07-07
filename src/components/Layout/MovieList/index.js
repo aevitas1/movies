@@ -3,6 +3,7 @@ import Loader from '../../Loader';
 import MovieItem from '../MovieItem';
 
 const MovieList = ({loading, movies}) => {
+    console.log(movies)
     return loading ?
      (
         <>
