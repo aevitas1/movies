@@ -16,6 +16,7 @@ const Header = () => {
             <div className="hero_text">
             </div>
         </div>
+        <p style={{textAlign: 'center', padding: '1rem 1rem'}}>This product uses the TMDB API but is not endorsed or certified by TMDB.</p>
     </>
     )
 }

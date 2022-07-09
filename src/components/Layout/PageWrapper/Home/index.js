@@ -5,9 +5,11 @@ import axios from "axios";
 import {API_KEY, API_URL} from "../../../../data/config";
 import {MovieContext} from "../../../../data/MovieContext";
 import Loader from "../../../Loader";
+import {filterMovies} from '../../../../data/helpers';
 
 const Home = () => {
     const [movies, setMovies] = useState([]);
+    const [addition, setAddition] = useState([]);
     const [page, setPage] = useState(1);
     const observer = useRef();
     const [loading, setLoading] = useState(false);
@@ -31,11 +33,18 @@ const Home = () => {
         const TrendingMovies = async () => {
             setText('');
             setLoading(true);
+
             await axios.get(`${API_URL}trending/movie/week?api_key=${API_KEY}&page=${page}`).then((res) => {
-                console.log(res.data)
+                // setMovies(prevMovies => {
+                //     return [...new Set([...prevMovies, ...res.data.results])];
+                // });
+                const newMovies = [];
+                setAddition(res.data.results);
+                filterMovies(movies, addition, newMovies);
                 setMovies(prevMovies => {
-                    return [...new Set([...prevMovies, ...res.data.results])];
-                });
+                   return [...new Set([...prevMovies, ...newMovies])];
+                })
+
                 setHasMore(res.data.results.length > 0);
             })
             setLoading(false);

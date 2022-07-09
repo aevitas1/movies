@@ -34,6 +34,7 @@ export const convertDate = oldDate => {
     return day + '-' + month + '-' + year;
 }
 
+// Actor gender
 export const gender = genderType => {
     switch(genderType) {
         case 0:
@@ -49,5 +50,16 @@ export const gender = genderType => {
             return 'Non-binair'
         ;break;
         default: return 'Not specified';
+    }
+}
+
+// Filter duplicate movies
+
+export const filterMovies = (movies, addition, newMovies) => {
+    for (let movie of addition) {
+        let duplicateIndex = movies.findIndex(old => old.id === movie.id)
+        if (duplicateIndex < 0) {
+            newMovies.push(movie);
+        }
     }
 }
