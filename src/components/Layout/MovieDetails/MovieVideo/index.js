@@ -11,8 +11,7 @@ const MovieVideo = () => {
         movie
     } = useContext(MovieContext);
 
-    {console.log(movie)}
-    return movieVideo.length > 0 ? (
+    return movieVideo.length !== 0 ? (
         <>
             <div className="video_container">
                 <iframe

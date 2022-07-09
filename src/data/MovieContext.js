@@ -12,10 +12,11 @@ export const MovieProvider = (props) => {
     const [movieImages, setMovieImages] = useState([]);
     const [recommendedMoviesList, setRecommendedMoviesList] = useState([]);
     const [similarMoviesList, setSimilarMoviesList] = useState([]);
+    const [movies, setMovies] = useState([]);
+
 
     // Fetch movie details
     const FetchMovie = async (movieId) => {
-        console.log('this works')
         setText('');
         setLoading(true);
         await axios.get(`${API_URL}movie/${movieId}?api_key=${API_KEY}`).then((res) => {
@@ -51,7 +52,8 @@ export const MovieProvider = (props) => {
                 movieImages,
                 loading,
                 recommendedMoviesList,
-                similarMoviesList
+                similarMoviesList,
+                movies,
             }}
         >
             {props.children}

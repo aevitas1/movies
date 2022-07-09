@@ -11,12 +11,13 @@ import MovieDetails from '../MovieDetails';
 
 const PageWrapper = () => {
     const {
-        text
+        text,
+        loading
     } = useContext(MovieContext);
 
     return (
         <div className="page_wrapper">
-            {text.length === 0 ? (
+            {text.length === 0 && loading === false ? (
                 <Routes>
                     <Route exact path='/' element={<Home />} />
                     <Route path='/popular' element={<Popular />} />

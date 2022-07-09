@@ -2,8 +2,7 @@ import './index.scss';
 import Loader from '../../Loader';
 import MovieItem from '../MovieItem';
 
-const MovieList = ({loading, movies}) => {
-    console.log(movies)
+const MovieList = ({loading, movies }) => {
     return loading ?
      (
         <>
@@ -14,7 +13,8 @@ const MovieList = ({loading, movies}) => {
             <div className="movie_grid">
             {movies.map((item) => (
                 <MovieItem key={item.id} item={item}/>
-            ))}
+                )
+            )}
             </div>
         </>
         )

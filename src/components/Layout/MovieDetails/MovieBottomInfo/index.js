@@ -12,7 +12,7 @@ const MovieBottomInfo = () => {
         movie,
         movieCredits,
         recommendedMoviesList,
-        similarMoviesList
+        similarMoviesList,
     } = useContext(MovieContext);
 
     return (
@@ -75,6 +75,7 @@ const MovieBottomInfo = () => {
                 <div className="movie_carrousel">
                     { <MovieList movies={similarMoviesList}/> }
                 </div>
+
             </div>
         </>
     )

@@ -11,6 +11,7 @@ const MovieItem = (item) => {
    } = useContext(MovieContext);
 
     return (
+
         <div className="card_wrapper">
             <Link to ={`/movie/` + `${item.item.id}`} onClick={() => FetchMovie(item.item.id)}>
                 <div className="card_body">
