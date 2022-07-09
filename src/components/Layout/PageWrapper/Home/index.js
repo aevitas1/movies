@@ -17,16 +17,16 @@ const Home = () => {
     } = useContext(MovieContext);
     const LastMovieRef = useCallback(movieRef => {
         if (loading) return
+        if (movies.length === 0) return
         if (observer.current) observer.current.disconnect();
         observer.current = new IntersectionObserver(entries => {
             if (entries[0].isIntersecting && hasMore) {
                 setPage(prevPage => prevPage + 1)
                 TrendingMovies();
-                console.log(movies)
             }
         })
         if (movieRef) observer.current.observe(movieRef);
-    }, [loading])
+    }, [loading, hasMore, movies])
 
         const TrendingMovies = async () => {
             setText('');
@@ -43,7 +43,7 @@ const Home = () => {
 
         useEffect(() => {
             TrendingMovies(page);
-        }, [])
+        }, [page])
 
 
     return loading ? (

@@ -1,6 +1,7 @@
 import './index.scss';
 
 import {useContext} from 'react';
+import {Link} from 'react-router-dom';
 import {convertMoney} from '../../../../data/helpers'
 import {MovieContext} from '../../../../data/MovieContext';
 import MovieList from '../../MovieList';
@@ -13,8 +14,8 @@ const MovieBottomInfo = () => {
         movieCredits,
         recommendedMoviesList,
         similarMoviesList,
+        FetchActor,
     } = useContext(MovieContext);
-
     return (
         <>
             <div className="info_container">
@@ -49,9 +50,10 @@ const MovieBottomInfo = () => {
                         movieCredits.cast.slice(0, 10).map((item) => (
                         <div className="actor_card">
                             <div className="actor_img">
-                                <img
-                                    src={item.profile_path === null ? NoImage : `${IMAGE_BASE_URL}w92/${item.profile_path}`}
+                                <Link to={`/actor/` + `${item.id}`} onClick={() => FetchActor(item.id)} class="no_after">
+                                <img src={item.profile_path === null ? NoImage : `${IMAGE_BASE_URL}w92/${item.profile_path}`}
                                     alt=""/>
+                                </Link>
                             </div>
                             <div className="card_body">
                                 <p className='real_name'>{item.name}
@@ -66,15 +68,23 @@ const MovieBottomInfo = () => {
                     )) : ('')}
                 </div>
 
-                <h2 style={{padding: '3rem 0'}}>Our recommendations</h2>
-                <div className="movie_carrousel">
-                    { <MovieList movies={recommendedMoviesList}/> }
-                </div>
+                {recommendedMoviesList.length > 0 &&
+                    (<>
+                        <h2 style={{padding: '3rem 0'}}>Our recommendations</h2>
+                        <div className="movie_carrousel">
+                        { <MovieList movies={recommendedMoviesList}/> }
+                        </div>
 
-                <h2 style={{padding: '3rem 0'}}>Similar movies</h2>
-                <div className="movie_carrousel">
-                    { <MovieList movies={similarMoviesList}/> }
-                </div>
+                    </>)}
+
+                {similarMoviesList.length > 0 &&
+                    (<>
+                        <h2 style={{padding: '3rem 0'}}>Similar movies</h2>
+                        <div className="movie_carrousel">
+                            { <MovieList movies={similarMoviesList}/> }
+                        </div>
+                    </>)}
+
 
             </div>
         </>

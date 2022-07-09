@@ -33,3 +33,21 @@ export const convertDate = oldDate => {
     const day = dates[8] + dates[9];
     return day + '-' + month + '-' + year;
 }
+
+export const gender = genderType => {
+    switch(genderType) {
+        case 0:
+            return 'Not specified'
+        ;break;
+        case 1:
+            return 'Female'
+        ;break;
+        case 2:
+            return 'Male'
+        ;break;
+        case 3:
+            return 'Non-binair'
+        ;break;
+        default: return 'Not specified';
+    }
+}

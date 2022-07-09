@@ -9,10 +9,11 @@ export const MovieProvider = (props) => {
     const [movie, setMovie] = useState([]);
     const [movieCredits, setMovieCredits] = useState([]);
     const [movieVideo, setMovieVideo] = useState([]);
-    const [movieImages, setMovieImages] = useState([]);
     const [recommendedMoviesList, setRecommendedMoviesList] = useState([]);
     const [similarMoviesList, setSimilarMoviesList] = useState([]);
     const [movies, setMovies] = useState([]);
+    const [actor, setActor] = useState([]);
+    const [actorMovies, setActorMovies] = useState([]);
 
 
     // Fetch movie details
@@ -28,14 +29,23 @@ export const MovieProvider = (props) => {
         await axios.get(`${API_URL}movie/${movieId}/videos?api_key=${API_KEY}`).then((res) => {
             setMovieVideo(res.data);
         })
-        await axios.get(`${API_URL}movie/${movieId}/images?api_key=${API_KEY}`).then((res) => {
-            setMovieImages(res.data);
-        })
         await axios.get(`${API_URL}movie/${movieId}/recommendations?api_key=${API_KEY}`).then((res) => {
             setRecommendedMoviesList(res.data.results);
         })
         await axios.get(`${API_URL}movie/${movieId}/similar?api_key=${API_KEY}`).then((res) => {
             setSimilarMoviesList(res.data.results);
+        })
+        setLoading(false);
+    }
+
+    // Fetch actor details
+    const FetchActor = async (id) => {
+        setLoading(true);
+        await axios.get(`${API_URL}person/${id}?api_key=${API_KEY}`).then((res) => {
+            setActor(res.data)
+        })
+        await axios.get(`${API_URL}person/${id}/movie_credits?api_key=${API_KEY}`).then((res) => {
+            setActorMovies(res.data)
         })
         setLoading(false);
     }
@@ -49,11 +59,13 @@ export const MovieProvider = (props) => {
                 movie,
                 movieCredits,
                 movieVideo,
-                movieImages,
                 loading,
                 recommendedMoviesList,
                 similarMoviesList,
                 movies,
+                FetchActor,
+                actor,
+                actorMovies
             }}
         >
             {props.children}

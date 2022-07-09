@@ -8,6 +8,7 @@ import {useContext} from 'react';
 import {MovieContext} from '../../../data/MovieContext';
 import SearchResults from "./SearchResults";
 import MovieDetails from '../MovieDetails';
+import ActorDetails from "../ActorDetails";
 
 const PageWrapper = () => {
     const {
@@ -24,6 +25,7 @@ const PageWrapper = () => {
                     <Route path='/upcoming' element={<Upcoming />} />
                     <Route path='/about' element={<About />} />
                     <Route path={`/movie/:id`} element={<MovieDetails/>}/>
+                    <Route path={`/actor/:id`} element={<ActorDetails />}/>
                     <Route path='*' element={<Home />} />
                 </Routes>
             ) : (

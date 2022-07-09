@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import {IMAGE_BASE_URL, POSTER_SIZE} from "../../../data/config";
 import {useContext} from 'react';
 import {MovieContext} from '../../../data/MovieContext';
+import {movieScore} from '../../../data/helpers';
 
 const MovieItem = (item) => {
    const {
@@ -21,7 +22,7 @@ const MovieItem = (item) => {
                                 `${IMAGE_BASE_URL}${POSTER_SIZE}${item.item.poster_path}`
                                 : NoImage} alt={`Poster of ${item.item.title}`}/>
                     </div>
-                    <div data-rating={item.item.vote_average} className="card_rating"></div>
+                    <div data-rating={movieScore(item.item.vote_average)} className="card_rating"></div>
                 </div>
             </Link>
         </div>

@@ -17,7 +17,7 @@
     position: absolute;
     height: 120vh;
     width: 100vw;
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: rgba(0, 0, 0, 0);
     z-index: 0;
     top: 0;
     left: 0;
@@ -25,7 +25,7 @@
 
   .gradient {
     height: 15%;
-    top: 75%;
+    top: 80%;
     width: 100%;
     background: linear-gradient(180deg, rgba(var(--main-bg), 0) 0%, rgba(var(--main-bg), 1) 100%);
     z-index: 10;
