@@ -1,5 +1,3 @@
-import './index.scss';
-
 const Upcoming = () => {
     return (
         <>

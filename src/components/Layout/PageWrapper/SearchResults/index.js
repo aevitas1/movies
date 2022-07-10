@@ -1,4 +1,3 @@
-import './index.scss';
 import {useContext, useEffect, useState} from 'react';
 import {MovieContext} from '../../../../data/MovieContext';
 import axios from 'axios';

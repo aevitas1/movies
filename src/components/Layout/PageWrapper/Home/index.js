@@ -1,4 +1,3 @@
-import './index.scss';
 import { useEffect, useState, useContext, useRef, useCallback } from 'react';
 import MovieList from '../../MovieList';
 import axios from "axios";
@@ -17,7 +16,7 @@ const Home = () => {
     const {
         setText,
     } = useContext(MovieContext);
-    const LastMovieRef = useCallback(movieRef => {
+    const LastMovieRef = useCallback(LastMovieRef => {
         if (loading) return
         if (movies.length === 0) return
         if (observer.current) observer.current.disconnect();
@@ -27,32 +26,37 @@ const Home = () => {
                 TrendingMovies();
             }
         })
-        if (movieRef) observer.current.observe(movieRef);
-    }, [loading, hasMore, movies])
-
-        const TrendingMovies = async () => {
-            setText('');
-            setLoading(true);
-            await axios.get(`${API_URL}trending/movie/week?api_key=${API_KEY}&page=${page}`).then((res) => {
-                // setMovies(prevMovies => {
-                //     return [...new Set([...prevMovies, ...res.data.results])];
-                // });
-                const newMovies = [];
-                setAddition(res.data.results);
-                filterMovies(movies, addition, newMovies);
-                setMovies(prevMovies => {
-                   return [...new Set([...prevMovies, ...newMovies])];
-                })
-                console.log(movies)
-                setHasMore(res.data.results.length > 0);
-            })
-            setLoading(false);
-        }
+        if (LastMovieRef) observer.current.observe(LastMovieRef);
+    }, [loading, movies.length, hasMore, movies])
 
 
         useEffect(() => {
             TrendingMovies(page);
         }, [page])
+
+    const TrendingMovies = () => {
+        setText('');
+        setLoading(true);
+        const newMovies = [];
+        try {
+            axios.get(`${API_URL}trending/movie/week?api_key=${API_KEY}&page=${page}`).then((res) => {
+                setAddition(res.data.results);
+                setHasMore(res.data.results.length > 0);
+            })
+        } catch(error) {
+            console.log(error)
+        }
+        try {
+            filterMovies(movies, addition, newMovies);
+            setMovies(prevMovies => {
+                return [...new Set([...prevMovies, ...newMovies])];
+            })
+        }
+        catch(error) {
+            console.log(error)
+        }
+        setLoading(false);
+    }
 
 
     return loading ? (
