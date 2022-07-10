@@ -33,7 +33,6 @@ const Home = () => {
         const TrendingMovies = async () => {
             setText('');
             setLoading(true);
-
             await axios.get(`${API_URL}trending/movie/week?api_key=${API_KEY}&page=${page}`).then((res) => {
                 // setMovies(prevMovies => {
                 //     return [...new Set([...prevMovies, ...res.data.results])];
@@ -44,11 +43,12 @@ const Home = () => {
                 setMovies(prevMovies => {
                    return [...new Set([...prevMovies, ...newMovies])];
                 })
-
+                console.log(movies)
                 setHasMore(res.data.results.length > 0);
             })
             setLoading(false);
         }
+
 
         useEffect(() => {
             TrendingMovies(page);

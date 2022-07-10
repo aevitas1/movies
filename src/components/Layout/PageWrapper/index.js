@@ -30,7 +30,7 @@ const PageWrapper = () => {
                 </Routes>
             ) : (
                 <>
-                            <SearchResults />
+                    <SearchResults />
                 </>
             )}
 

@@ -5,54 +5,6 @@
   height: 3rem;
   width: 100vw;
 
-  .nav_btn {
-    display: flex;
-    width: max(5vw, 4rem);
-
-    .menu_btn {
-    display: flex;
-    flex-flow: column;
-    justify-content: space-between;
-    align-self: center;
-    margin: auto auto;
-    width: 1.5rem;
-    height: 1.5rem;
-    cursor: pointer;
-    z-index: 999;
-
-    & * {
-      transition: 100ms ease-out all;
-    }
-
-    &.m_active {
-      width: 2rem;
-      height: 2rem;
-      transform: translateX(0.2rem) translateY(0.2rem);
-    }
-
-    .btn_top,
-    .btn_middle,
-    .btn_bottom {
-      position: relative;
-      height: 3px;
-      width: 1.5rem;
-      background-color: rgb(var(--main-font-clr));
-    }
-
-    .btn_middle.m_active {
-      opacity: 0;
-    }
-
-    .btn_top.m_active {
-      transform: rotate(45deg) translateY(0.5rem) translateX(0.5rem);
-    }
-
-    .btn_bottom.m_active {
-      transform: rotate(-45deg) translateY(-0.8rem) translateX(0.75rem);
-    }
-  }
-  }
-
   .nav_hide {
     display: none;
   }

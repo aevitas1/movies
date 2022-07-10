@@ -130,7 +130,7 @@ select{
 }
 
 body {
-  background-color: rgb(var(--main-bg));
+  background: rgb(var(--main-bg));
   overflow-x: hidden;
 
   .inner_wrapper {

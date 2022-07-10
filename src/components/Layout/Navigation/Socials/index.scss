@@ -1,0 +1,31 @@
+.socials {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
+  .tmdb_credits {
+    padding-top: 0.5rem;
+  }
+  .tmdb_credits,
+  .credits {
+    text-align: center;
+  }
+  .credits p span {
+    font-size: 0.8rem;
+  }
+  .social {
+    display: flex;
+    justify-content: center;
+    a {
+      padding: 0.2rem 1rem;
+      font-size: 2rem;
+    }
+    svg {
+      cursor: pointer;
+      &:hover {
+        color: rgb(var(--secondary-clr));
+        transform: scale(1.1)
+      }
+    }
+  }
+}
