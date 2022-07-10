@@ -48,9 +48,9 @@ const MovieBottomInfo = () => {
                     {movieCredits.cast.length > 0 ?
 
                         movieCredits.cast.slice(0, 10).map((item) => (
-                        <div className="actor_card">
+                        <div key={item.name} className="actor_card">
                             <div className="actor_img">
-                                <Link to={`/actor/` + `${item.id}`} onClick={() => FetchActor(item.id)} class="no_after">
+                                <Link to={`/actor/` + `${item.id}`} onClick={() => FetchActor(item.id)} className="no_after">
                                 <img src={item.profile_path === null ? NoImage : `${IMAGE_BASE_URL}w92/${item.profile_path}`}
                                     alt=""/>
                                 </Link>

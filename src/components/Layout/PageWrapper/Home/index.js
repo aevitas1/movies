@@ -8,7 +8,6 @@ import {filterMovies} from '../../../../data/helpers';
 
 const Home = () => {
     const [movies, setMovies] = useState([]);
-    const [addition, setAddition] = useState([]);
     const [page, setPage] = useState(1);
     const observer = useRef();
     const [loading, setLoading] = useState(false);
@@ -23,43 +22,32 @@ const Home = () => {
         observer.current = new IntersectionObserver(entries => {
             if (entries[0].isIntersecting && hasMore) {
                 setPage(prevPage => prevPage + 1)
-                TrendingMovies();
             }
         })
         if (LastMovieRef) observer.current.observe(LastMovieRef);
-    }, [loading, movies.length, hasMore, movies])
+    }, [loading, hasMore, movies])
 
-
-        useEffect(() => {
-            TrendingMovies(page);
-        }, [page])
-
-    const TrendingMovies = () => {
+    const TrendingMovies = async () => {
         setText('');
         setLoading(true);
         const newMovies = [];
-        try {
-            axios.get(`${API_URL}trending/movie/week?api_key=${API_KEY}&page=${page}`).then((res) => {
-                setAddition(res.data.results);
-                setHasMore(res.data.results.length > 0);
-            })
-        } catch(error) {
-            console.log(error)
-        }
-        try {
-            filterMovies(movies, addition, newMovies);
-            setMovies(prevMovies => {
-                return [...new Set([...prevMovies, ...newMovies])];
-            })
-        }
-        catch(error) {
-            console.log(error)
-        }
+        await axios.get(`${API_URL}trending/movie/week?api_key=${API_KEY}&page=${page}`).then((res) => {
+            setHasMore(res.data.results.length > 0);
+            filterMovies(movies, res.data.results, newMovies);
+            setMovies(prevMovies => (
+                [...prevMovies, ...newMovies]
+            ))
+            console.log(movies)
+        })
         setLoading(false);
     }
 
+    useEffect(() => {
+        TrendingMovies();
+    }, [page])
 
-    return loading ? (
+
+    return movies.length == 0 ? (
         <>
             <Loader/>
         </>

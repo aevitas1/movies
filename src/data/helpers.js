@@ -54,10 +54,9 @@ export const gender = genderType => {
 }
 
 // Filter duplicate movies
-
-export const filterMovies = (movies, addition, newMovies) => {
-    for (let movie of addition) {
-        let duplicateIndex = movies.findIndex(old => old.id === movie.id)
+export const filterMovies = (movies, results, newMovies) => {
+    for (let movie of results) {
+        let duplicateIndex = movies.findIndex(old => old.id == movie.id)
         if (duplicateIndex < 0) {
             newMovies.push(movie);
         }

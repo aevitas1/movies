@@ -16,7 +16,7 @@ const MovieVideo = () => {
             <div className="video_container">
                 <iframe
                     src={`https://www.youtube.com/embed/${movieVideo.results[0].key}
-                    ?playlist=${movieVideo.results[0].key}&controls=0&autoplay=1&mute=1&frameborder=0&loop=1`}
+                    ?playlist=${movieVideo.results[0].key}&controls=0&autoplay=1&mute=1&frameborder=0&loop=1&SameSite=None`}
                 >
                 </iframe>
                 <div className="gradient"></div>
