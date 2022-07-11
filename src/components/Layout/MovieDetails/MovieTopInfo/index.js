@@ -25,32 +25,27 @@ const MovieTopInfo = () => {
                     <h1>{movie.title}</h1>
                     <p className='tagline'>{movie.tagline}</p>
                     <span>
-                                {movie.adult === true ? (
-                                        <p>&nbsp;R-rated &#x2022;</p>
-                                    ) :
-                                    ('')}
+                                {movie.adult === true && (
+                                        <p>R-rated</p>
+                                    )}
 
                         {movie.genres.length !== 0 && (
-                            <p>{movie.genres[0].name} &#x2022; </p>
+                            <p>{movie.genres[0].name}</p>
                         )}
 
-                        {movie.status === 'Released' ? (
-                            <p className='release_date'>&nbsp;
+                        {movie.status === 'Released' && (
+                            <p className='release_date'>
                                 {releaseDate(movie.release_date)}
-                                &nbsp;({movie.original_language}) &#x2022; </p>
-                        ) : (
-                            ''
+                                &nbsp;({movie.original_language}) </p>
                         )}
-                        <p>&nbsp;{calcTime(movie.runtime)} &#x2022;</p>
-                            <div className="movie_score"><p>&nbsp;
+                        <p>{calcTime(movie.runtime)}</p>
+                            <div className="movie_score"><p>
                                 {movieScore(movie.vote_average)}
                                 </p></div>
                             </span>
                     <p className="movie_overview">{movie.overview}</p>
-                    {movie.status !== 'Released' ? (
+                    {movie.status !== 'Released' && (
                         <p className="release_date_full">Coming {convertDate(movie.release_date)}</p>
-                    ) : (
-                        ''
                     )}
                 </div>
             </div>

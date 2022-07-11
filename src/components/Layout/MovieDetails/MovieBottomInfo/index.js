@@ -20,28 +20,31 @@ const MovieBottomInfo = () => {
         <>
             <div className="info_container">
                 <div className="info_stroke">
-                    <table>
-                        <thead>
-                        <tr>
-                            <th>Budget</th>
-                            <th>Revenue</th>
-                            <th>Total votes</th>
-                            <th>Website</th>
-                            <th>IMDB</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>{convertMoney(movie.budget)}</td>
-                            <td>{convertMoney(movie.revenue)}</td>
-                            <td>{movie.vote_count}</td>
-                            <td><a href={movie.homepage} target="_blank" rel="noreferrer">{movie.title}</a></td>
-                            <td><a href={`https://www.imdb.com/title/${movie.imdb_id}`} target="_blank" rel="noreferrer">Check
-                                it out</a>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+                    <ul>
+                        <li className="no_style"><a href={movie.homepage} target="_blank" rel="noreferrer">Official website</a></li>
+                    </ul>
+
+                    <ul>
+                        <li><p>Budget</p></li>
+                        <li><p>{convertMoney(movie.budget)}</p></li>
+                    </ul>
+
+                    <ul>
+                        <li><p>Revenue</p></li>
+                        <li><p>{convertMoney(movie.revenue)}</p></li>
+                    </ul>
+
+                    <ul>
+                        <li><p>Total votes</p></li>
+                        <li><p>{movie.vote_count}</p></li>
+                    </ul>
+
+                    <ul>
+                        <li><p>IMDB</p></li>
+                        <li><a href={`https://www.imdb.com/title/${movie.imdb_id}`} target="_blank" rel="noreferrer">Check
+                            it out</a></li>
+                    </ul>
+
                 </div>
                 <div className="actors">
                     <h2>Actors</h2>

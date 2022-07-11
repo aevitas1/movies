@@ -1,26 +1,33 @@
 .info_container {
   width: 100vw;
-  padding: 5vh 10vw;
-  z-index: 999;
+  padding: 5vh 3vw;
   background-color: rgb(var(--main-bg));
   transform: translateY(10vh);
   min-height: 40vh;
-
+  @media screen and (max-width: 768px) {
+    padding: 0 3vw;
+    transform: translateY(5vh);
+  }
   .info_stroke {
-    display: flex;
-    justify-content: center;
-
-    table {
-      thead,
-      tbody {
-        text-align: left;
-
-        tr th,
-        tr td {
-          padding: 0 1rem;
+    ul {
+      padding: 0 0.5rem 1rem 0.5rem;
+      li {
+        width: 8.5rem;
+        &:last-child p {
+          opacity: 0.8;
+        }
+        &:first-child:not(.no_style) {
+          font-weight: 700;
+          text-decoration: underline;
+          padding-bottom: 0.2rem;
         }
       }
     }
+    display: flex;
+    justify-content: space-between;
+    width: min(80vw, 1000px);
+    margin: 0 auto;
+    flex-wrap: wrap;
   }
 
   .actors {

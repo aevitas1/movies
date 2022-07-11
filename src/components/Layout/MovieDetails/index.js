@@ -5,7 +5,7 @@ import Loader from '../../Loader';
 import MovieBottomInfo from "./MovieBottomInfo";
 import MovieVideo from "./MovieVideo";
 import MovieTopInfo from "./MovieTopInfo";
-// import MovieBackdrop from './MovieBackdrop';
+import MovieBackdrop from './MovieBackdrop';
 
 const MovieDetails = () => {
 
@@ -20,10 +20,13 @@ const MovieDetails = () => {
     ) : (
         <div className="movie_wrapper">
             <div className="movie_container">
-                {/*<MovieBackdrop />*/}
-                <MovieVideo />
-                <MovieTopInfo />
-                <MovieBottomInfo />
+                <div className="top">
+                    <MovieTopInfo />
+                    <MovieBackdrop />
+                </div>
+                <div className="bottom">
+                    <MovieBottomInfo />
+                </div>
             </div>
         </div>
     )

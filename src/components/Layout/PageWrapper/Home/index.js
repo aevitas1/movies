@@ -1,3 +1,4 @@
+import './index.scss';
 import { useEffect, useState, useContext, useRef, useCallback } from 'react';
 import MovieList from '../../MovieList';
 import axios from "axios";
@@ -54,7 +55,7 @@ const Home = () => {
     ) :(
         <>
             <MovieList loading={loading} movies={movies} />
-            <div ref={LastMovieRef}></div>
+            <div className="movieref" ref={LastMovieRef}></div>
         </>
     )
 }
