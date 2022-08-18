@@ -12,15 +12,15 @@ const {
     fetchActor}
     = require('../controllers/movieController');
 
-router.get('/movies', getMovies);
-router.get('/actors/id', fetchActor);
+router.route('/movies').get(getMovies).post(setMovie)
 
 router.route('/movie/:id')
-    .post(setMovie)
     .get(fetchMovie)
     .get(fetchVideo)
     .get(fetchRecommendations)
     .get(fetchSimilar)
     .get(fetchCrew)
+
+router.get('/actors/id', fetchActor);
 
 module.exports = router
