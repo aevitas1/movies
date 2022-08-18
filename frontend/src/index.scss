@@ -1,0 +1,172 @@
+/*Poppins: 100 / 300 / 400 / 500 / 700 / 900*/
+:root {
+//backgrounds
+--main-bg: 25, 25, 25;
+//main color scheme
+--secondary-clr: 255, 69, 0;
+//fonts
+--main-font-clr: 215, 217, 216;
+// nav bg
+--nav-bg: 3, 37, 65;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box
+}
+
+*:before,
+*:after {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+}
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+ul,
+li  {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+a   {
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    color: inherit;
+}
+
+img{
+    display: block;
+    width: 100%;
+}
+
+figure{
+    margin: 0;
+}
+
+html{
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd{
+    margin: 0;
+}
+
+ul[role='list'],
+li[role='list']{
+    list-style: none;
+}
+
+html:focus-within{
+    scroll-behavior: smooth;
+}
+
+body{
+    min-height: 100vh;
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+}
+
+a:not([class]){
+    text-decoration-skip-ink: auto;
+}
+
+img,
+picture{
+    max-width: 100%;
+    display: block;
+}
+
+input,
+button,
+textarea,
+select{
+    font: inherit;
+}
+
+@media (prefers-reduced-motion: reduce)
+{
+    html:focus-within {
+        scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after{
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+        transition-delay: 0ms !important;
+    }
+}
+
+body {
+    background: rgb(var(--main-bg));
+    overflow-x: hidden;
+
+.inner_wrapper {
+    padding-top: 10vh;
+}
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: rgb(var(--main-font-clr));
+}
+
+a:not(.card_wrapper > a, .no_after) {
+    position: relative;
+
+&::after {
+     content: '';
+     position: absolute;
+     background-color: rgba(var(--secondary-clr), 0.6);
+     height: 1rem;
+     width: max(100%, 1rem);
+     left: 0;
+     right: 0;
+     transform: translateY(-5px) skew(-10deg) rotate(-2deg);
+     bottom: -0.5rem;
+     transition: 100ms ease-out all;
+     z-index: -1;
+ }
+
+@media (hover: hover) {
+&:hover::after {
+    transform: translateY(0px) skew(-10deg) rotate(-2deg);
+}
+}
+}
+h1, h2, h3, h4, h5, h6 {
+    padding-bottom: 1.5rem;
+}
