@@ -1,43 +1,30 @@
 {
   "name": "movies",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.3.0",
-    "@testing-library/user-event": "^13.5.0",
-    "axios": "^0.27.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-icons": "^4.4.0",
-    "react-router-dom": "^6.3.0",
-    "react-scripts": "5.0.1",
-    "sass": "^1.52.3",
-    "typeface-poppins": "^1.1.13",
-    "web-vitals": "^2.1.4"
-  },
+  "version": "1.0.0",
+  "description": "Movie app with TMDB",
+  "main": "server.js",
   "scripts": {
-    "start": "node_modules/.bin/react-scripts start",
-    "build": "node_modules/.bin/react-scripts build",
-    "test": "node_modules/.bin/react-scripts test",
-    "eject": "node_modules/.bin/react-scripts eject"
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js",
+    "client": "npm start --prefix frontend"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aevitas1/movies.git"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "author": "Stephan van der Meijden",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aevitas1/movies/issues"
+  },
+  "homepage": "https://github.com/aevitas1/movies#readme",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-async-handler": "^1.2.0",
+    "mongoose": "^6.5.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
   }
 }
