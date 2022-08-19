@@ -1,20 +1,16 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from "./pages/Home/home";
-import Movie from './pages/Movie/movie';
+import Header from './components/navigation/header';
+import Pagewrapper from "./pages/Pagewrapper";
+import {MovieProvider} from "./data/MovieContext";
+
 function App() {
   return (
     <>
-        <Router>
-    <div className="page-outer-wrapper">
-        <Routes>
-            <Route path='/' element={<Home/>} />
-
-
-            {/*Todo change '1' to movie.id*/}
-            <Route path='/1' element={<Movie/>} />
-        </Routes>
-    </div>
-        </Router>
+        <div className="page-outer-wrapper">
+            <MovieProvider>
+                <Header />
+                <Pagewrapper/>
+            </MovieProvider>
+        </div>
     </>
   )
 }

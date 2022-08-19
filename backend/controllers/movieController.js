@@ -15,13 +15,8 @@ const getMovies = asyncHandler(async (req, res) => {
 // @route   POST /movies
 // @access  Private
 const setMovie = asyncHandler(async (req, res) => {
-    if(!req.body.text) {
-        res.status(400)
-        throw new Error('Something went wrong.')
-    }
-
     const movie = await Movies.create({
-        text: req.body.text,
+
     })
     res.status(200).json(movie)
 })

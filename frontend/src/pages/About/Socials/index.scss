@@ -1,0 +1,22 @@
+.socials {
+  padding-top: 7vh;
+  .social {
+    display: flex;
+    justify-content: center;
+    padding: 3vh 0;
+
+    a {
+      padding: 0.2rem 1rem;
+      font-size: 2rem;
+    }
+
+    svg {
+      cursor: pointer;
+
+      &:hover {
+        color: rgb(var(--secondary-clr));
+        transform: scale(1.1)
+      }
+    }
+  }
+}
