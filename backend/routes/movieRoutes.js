@@ -6,21 +6,20 @@ const {
     setMovie,
     fetchMovie,
     fetchVideo,
-    fetchRecommendations,
-    fetchSimilar,
-    fetchCrew,
-    fetchActor}
+    }
     = require('../controllers/movieController');
 
-router.route('/movies').get(getMovies).post(setMovie)
+// POST a new movie to the database
+router.post('/').post(setMovie)
 
-router.route('/movie/:id')
-    .get(fetchMovie)
-    .get(fetchVideo)
-    .get(fetchRecommendations)
-    .get(fetchSimilar)
-    .get(fetchCrew)
+// GET a list of movies
+router.post('/').get(getMovies)
 
-router.get('/actors/id', fetchActor);
+// GET movie details
+router.post('/:id').get(fetchMovie)
+
+// UPDATE a movie
+router.route('/:id').patch(fetchVideo)
+
 
 module.exports = router
