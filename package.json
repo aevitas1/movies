@@ -20,15 +20,11 @@
   },
   "homepage": "https://github.com/aevitas1/movies#readme",
   "dependencies": {
-    "axios": "^0.27.2",
-    "cors": "^2.8.5",
-    "dotenv": "^16.0.1",
-    "express": "^4.18.1",
-    "express-async-handler": "^1.2.0",
-    "mongoose": "^6.5.2"
+    "express": "^4.17.2",
+    "mongoose": "^6.1.9"
   },
   "devDependencies": {
-    "concurrently": "^7.3.0",
-    "nodemon": "^2.0.19"
+    "concurrently": "^7.0.0",
+    "nodemon": "^2.0.15"
   }
 }

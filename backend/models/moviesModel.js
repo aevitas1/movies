@@ -3,10 +3,9 @@ const Schema = mongoose.Schema;
 
 const movieSchema = new Schema({
     title: String,
-    id: Number,
-    // { type: Number, unique: true },
+    id: mongoose.Schema.Types.ObjectId,
     releaseDate: Date,
     video: String,
 });
 
-module.exports = mongoose.model('Movie', movieSchema);
+module.exports = mongoose.model('Movies', movieSchema);

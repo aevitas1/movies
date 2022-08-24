@@ -6,7 +6,7 @@ const {
     setMovie,
     fetchMovie,
     fetchVideo,
-    }
+}
     = require('../controllers/movieController');
 
 // POST a new movie to the database
