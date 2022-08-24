@@ -8,7 +8,8 @@ function Home() {
     const fetchMovies = async () => {
       try {
         axios.get("http://localhost:8000/movies").then((res) => {
-          console.log(res.status);
+          console.log(res.data);
+          setMovies(res.data);
         });
       } catch (error) {
         if (error.response) {
