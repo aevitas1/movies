@@ -14,8 +14,6 @@ function Home() {
       } catch (error) {
         if (error.response) {
           console.log(error.response);
-          //   console.log(error.response.data);
-          //   console.log(error.response.headers);
         } else if (error.request) {
           console.log(error.request);
         } else {
@@ -34,10 +32,12 @@ function Home() {
       {movies.map((movie) => (
         <>
           <div key={movie.id}>
-            <h1>{movie.title}</h1>
-            <p>{movie.id} hi</p>
-            <p>{movie.releaseDate}</p>
-            <a href={movie.video}>Movie link</a>
+            <h1 key={movie.title}>{movie.title}</h1>
+            <p key={movie.id}>{movie.id} hi</p>
+            <p key={movie.releaseDate}>{movie.releaseDate}</p>
+            <a href={movie.video} key={movie.video}>
+              Movie link
+            </a>
           </div>
         </>
       ))}
