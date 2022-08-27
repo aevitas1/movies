@@ -1,19 +1,20 @@
-const asyncHandler = require('express-async-handler');
-const {API_KEY, API_URL} = require('./config')
-const {setMovie} = require('../controllers/movieController')
-const axios = require("axios");
+const axios = require('axios');
+const { API_URL, API_KEY } = require('./config');
+const movies = [];
+const { setMovie } = require('../routes/movieRoutes')
 
-
-const FetchMovies = asyncHandler(async () => {
-    // await axios(`${API_URL}trending/movie/week?api_key=${API_KEY}`).then((res) => {
-    console.log('test')
+const fetchMovies = async (req, res) => {
+    axios.get(`${API_URL}/trending/all/week?api_key=${API_KEY}`).then((res) => {
         setMovie({
-            title: "Harry Potter",
-            id: "123456",
-            releaseDate: "01-01-2020",
-        })
-    await axios.post("/movies", setMovie)
-    // })
-})
+            title: res.data.title,
+        });
+        console.log(res.data)
 
-module.exports =  FetchMovies;
+        // axios.post("http://localhost:8000", {
+        //     title: res.data.title,
+
+        // })
+    })
+}
+
+module.exports = { fetchMovies }

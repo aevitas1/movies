@@ -1,5 +1,3 @@
-const asyncHandler = require('express-async-handler');
-
 const Movies = require('../models/moviesModel');
 
 const mongoose = require('mongoose');
@@ -10,32 +8,24 @@ const mongoose = require('mongoose');
 const getMovies = async (req, res) => {
     const movies = await Movies.find()
     res.status(200).json(movies)
-};
+}
 
 // @desc    Set movie
 // @route   POST /movies
 // @access  Private
 const setMovie = async (req, res) => {
-
-        const movie = asyncHandler(await Movies.create({
+    try {
+        const movie = await Movies.create({
             title: req.body.title,
             id: req.body.id,
-            releaseDate: req.body.releaseDate,
-        }))
-    res.status(200).json(movie)
-
-        // try {
-        //     const movie = await Movies.create({
-        //         title: req.body.title,
-        //         id: req.body.id,
-        //         releaseDate: req.body.releaseDate
-        //     })
-        //     console.log(movie)
-        //     res.status(200).json(movie)
-        // } catch (error) {
-        //     res.status(400).json({error: error.message})
-        // }
-};
+            releaseDate: req.body.releaseDate
+        })
+        console.log(movie)
+        res.status(200).json(movie)
+    } catch (error) {
+        res.status(400).json({ error: error.message })
+    }
+}
 
 
 // @desc    Fetch movie
@@ -45,13 +35,13 @@ const fetchMovie = async (req, res) => {
     const { id } = req.params
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(404).json({error: 'No movie found'})
+        return res.status(404).json({ error: 'No movie found' })
     }
 
     const movie = await Movie.findById(id)
 
     if (!movie) {
-        return res.status(404).json({error: 'No movie found'})
+        return res.status(404).json({ error: 'No movie found' })
     }
 
     res.status(200).json(movie)
@@ -64,15 +54,15 @@ const fetchVideo = async (req, res) => {
     const { id } = req.params
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(404).json({error: 'No movie found'})
+        return res.status(404).json({ error: 'No movie found' })
     }
 
-    const movie = await Movie.findOneAndUpdate({_id: id}, {
+    const movie = await Movie.findOneAndUpdate({ _id: id }, {
         ...req.body
     })
 
     if (!movie) {
-        return res.status(404).json({error: 'No movie found'})
+        return res.status(404).json({ error: 'No movie found' })
     }
 
     res.status(200).json(movie)

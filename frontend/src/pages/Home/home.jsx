@@ -1,51 +1,50 @@
-import {useEffect, useState} from 'react';
-import axios from 'axios';
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 function Home() {
-    const [movies, setMovies] = useState([])
+  const [movies, setMovies] = useState([]);
 
-    useEffect(() => {
-        const fetchMovies = async () => {
-            // axios.get('http://localhost:6000/movies').then((res) => {
-            //         setMovies(res.data)
-            // })
-            await axios.post("http://localhost:8000/movies", {
-
-                    title: "This is from the frontend",
-                    id: "2",
-                    releaseDate: "01-01-2022",
-            })
+  useEffect(() => {
+    const fetchMovies = async () => {
+      try {
+        axios.get("http://localhost:8000/movies").then((res) => {
+          console.log(res.data);
+          setMovies(res.data);
+        });
+      } catch (error) {
+        if (error.response) {
+          console.log(error.response);
+        } else if (error.request) {
+          console.log(error.request);
+        } else {
+          console.log("error", error.message);
         }
-        // const fetchMovies = async () => {
-        //     const response = await fetch('/movies')
-        //     const json = await response.json()
-        //
-        //     console.log(response)
-        //     if (response.ok) {
-        //         setMovies(json);
-        //     }
-        // }
-        console.log(fetchMovies())
-        fetchMovies();
-    }, []);
+      }
+    };
+    fetchMovies();
+  }, []);
 
-    console.log(movies)
-    return movies ? (
-        <div>
-            <h1>Test</h1>
+  console.log(movies);
+  return movies ? (
+    <div>
+      <h1>Test</h1>
 
-            {movies.map(movie =>
-                <>
-                    <div key={movie.id}>
-                    <h1>{movie.title}</h1>
-                    <p>{movie.id} hi</p>
-                    <p>{movie.releaseDate}</p>
-                    <a href={movie.video}>Movie link</a>
-                    </div>
-                </>
-            )}
-        </div>
-    ) : ('')
+      {movies.map((movie) => (
+        <>
+          <div key={movie.id}>
+            <h1 key={movie.title}>{movie.title}</h1>
+            <p key={movie.id}>{movie.id} hi</p>
+            <p key={movie.releaseDate}>{movie.releaseDate}</p>
+            <a href={movie.video} key={movie.video}>
+              Movie link
+            </a>
+          </div>
+        </>
+      ))}
+    </div>
+  ) : (
+    ""
+  );
 }
 
-export default Home
+export default Home;
