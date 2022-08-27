@@ -10,24 +10,32 @@ const mongoose = require('mongoose');
 const getMovies = async (req, res) => {
     const movies = await Movies.find()
     res.status(200).json(movies)
-}
+};
 
 // @desc    Set movie
 // @route   POST /movies
 // @access  Private
 const setMovie = async (req, res) => {
-        try {
-            const movie = await Movies.create({
-                title: req.body.title,
-                id: req.body.id,
-                releaseDate: req.body.releaseDate
-            })
-            console.log(movie)
-            res.status(200).json(movie)
-        } catch (error) {
-            res.status(400).json({error: error.message})
-        }
-}
+
+        const movie = asyncHandler(await Movies.create({
+            title: req.body.title,
+            id: req.body.id,
+            releaseDate: req.body.releaseDate,
+        }))
+    res.status(200).json(movie)
+
+        // try {
+        //     const movie = await Movies.create({
+        //         title: req.body.title,
+        //         id: req.body.id,
+        //         releaseDate: req.body.releaseDate
+        //     })
+        //     console.log(movie)
+        //     res.status(200).json(movie)
+        // } catch (error) {
+        //     res.status(400).json({error: error.message})
+        // }
+};
 
 
 // @desc    Fetch movie

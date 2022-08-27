@@ -6,8 +6,14 @@ function Home() {
 
     useEffect(() => {
         const fetchMovies = async () => {
-            axios.get('http://localhost:6000/movies').then((res) => {
-                    setMovies(res.data)
+            // axios.get('http://localhost:6000/movies').then((res) => {
+            //         setMovies(res.data)
+            // })
+            await axios.post("http://localhost:8000/movies", {
+
+                    title: "This is from the frontend",
+                    id: "2",
+                    releaseDate: "01-01-2022",
             })
         }
         // const fetchMovies = async () => {
@@ -21,7 +27,7 @@ function Home() {
         // }
         console.log(fetchMovies())
         fetchMovies();
-    }, [])
+    }, []);
 
     console.log(movies)
     return movies ? (
