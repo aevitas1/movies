@@ -1,11 +1,9 @@
 const express = require('express');
 const connectDB = require('./config/db')
 const port = 8000;
-
 const movieRoutes = require('./routes/movieRoutes')
 const dotenv = require('dotenv').config()
 const cors = require('cors');
-const { fetchMovies } = require('./data/fetchMovies');
 
 connectDB();
 
