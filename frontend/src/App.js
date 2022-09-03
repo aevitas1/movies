@@ -3,7 +3,7 @@ import Pagewrapper from "./pages/Pagewrapper";
 import { MovieProvider } from "./data/MovieContext";
 
 function App() {
-  console.log(console.clear());
+  // console.log(console.clear());
   return (
     <>
       <div className="page-outer-wrapper">

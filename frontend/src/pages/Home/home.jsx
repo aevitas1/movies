@@ -1,14 +1,37 @@
 import { useEffect, useState, useContext } from "react";
 import {MovieContext} from "../../data/MovieContext";
-import {FetchMovies} from '../../data/Requests';
+import {FetchMovies, FetchMoviesApi, PostMovie } from '../../data/Requests';
 
 
 function Home() {
-  const {movies, setMovies} = useContext(MovieContext);
+  const {
+    movies,
+    setMovies,
+    movieApi,
+    setMovieApi
+  } = useContext(MovieContext);
 
-  useEffect(() => {
-    FetchMovies(setMovies);
-  }, [setMovies])
+  const bigAssFunction = () => {
+    const Fetch = () => {
+      useEffect(() => {
+        FetchMovies(setMovies);
+      }, [setMovies])
+    }
+    Fetch();
+
+    const FetchApi =  () => {
+      useEffect(() => {
+        FetchMoviesApi(setMovieApi)
+      }, [setMovieApi]);
+
+      useEffect(() => {
+        PostMovie(movieApi)
+      }, [movieApi, movies]);
+    }
+    FetchApi();
+
+  }
+bigAssFunction();
 
 
   return movies.length > 0 ? (
@@ -16,13 +39,9 @@ function Home() {
       {movies.map((movie) => (
         <>
           <div key={movie.id}>
-            <h1 key={movie.title}>{movie.title}</h1>
-            <p key={movie.id}>{movie.id} hi</p>
-            <p key={movie.releaseDate}>{movie.releaseDate}</p>
-            <a href={movie.video} key={movie.video}>
-              Movie link
-            </a>
+            <p>{movie.release_date}</p>
           </div>
+          <br></br>
         </>
       ))}
     </div>
